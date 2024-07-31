@@ -1,0 +1,46 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment variables
+.env
+
+# Ignore build files
+dist/
+build/
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore IDE-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore temporary files
+*.tmp
+
+# Ignore lock files
+*.lock
+
+# Ignore compiled files
+*.pyc
+*.class
+
+# Ignore IDE-specific files
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS-specific files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore test coverage files
+coverage/
