@@ -1,0 +1,1216 @@
+{
+	"info": {
+		"_postman_id": "903466c4-c595-4711-b709-b578cede4cb7",
+		"name": "Success Criteria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36387720"
+	},
+	"item": [
+		{
+			"name": "CRUD  - CARS",
+			"item": [
+				{
+					"name": "Create Car",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test script for /api/cars endpoint\r",
+									"pm.test(\"Status code is 201\", function () {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.an('object');\r",
+									"    pm.expect(jsonData).to.have.property('make');\r",
+									"    pm.expect(jsonData).to.have.property('model');\r",
+									"    pm.expect(jsonData).to.have.property('year');\r",
+									"    pm.expect(jsonData).to.have.property('price');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"make\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2021,\n    \"price\": 1999999\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Car",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"make\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2021,\n    \"price\": 1999999\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/cars",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "102",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"66-q+AM6vBdFXgVI7aAU1OGw/zpbz0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Jul 2024 16:41:04 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"make\": \"Toyota\",\n    \"model\": \"Camry\",\n    \"year\": 2021,\n    \"price\": 1999999,\n    \"_id\": \"6697f420e74334739a15f7cc\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all cars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test script for GET /api/cars endpoint\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is valid\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"\r",
+									"    pm.expect(jsonData).to.be.an('array');\r",
+									"\r",
+									"    jsonData.forEach(function(d) {\r",
+									"        pm.expect(d).to.be.an('object');\r",
+									"\r",
+									"        pm.test(\"Object has make property\", function () {\r",
+									"            pm.expect(d).to.have.property('make');\r",
+									"        });\r",
+									"        \r",
+									"        pm.test(\"Object has model property\", function () {\r",
+									"            pm.expect(d).to.have.property('model');\r",
+									"        });\r",
+									"        \r",
+									"        pm.test(\"Object has year property\", function () { \r",
+									"            pm.expect(d).to.have.property('year');\r",
+									"        });\r",
+									"        \r",
+									"        pm.test(\"Object has price property\", function () { \r",
+									"            pm.expect(d).to.have.property('price');\r",
+									"        });\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cars"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all cars",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/cars",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cars"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "104",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"68-VVSRKdRmV55R1CnzIy7+yoVbuMM\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jul 2024 12:16:33 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6696645e5e5000fe18f745fa\",\n        \"make\": \"Toyota\",\n        \"model\": \"Camry\",\n        \"year\": 2020,\n        \"price\": 1999999,\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update Car",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/cars/66aa23c1ccbdc94b2b6ecf01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cars",
+								"66aa23c1ccbdc94b2b6ecf01"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Car",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2019,\r\n    \"price\": 199990\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/cars/6697f443e74334739a15f7d0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cars",
+										"6697f443e74334739a15f7d0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "JSON",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"64-Lsfl7Zb7m1OevGx//k+0Pzpv+aw\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Jul 2024 16:45:45 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6697f443e74334739a15f7d0\",\n    \"make\": \"Honda\",\n    \"model\": \"Civic\",\n    \"year\": 2019,\n    \"price\": 199990,\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Find By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"name": "content-type",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "<calculated when request is sent>",
+								"name": "content-length",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"Honda\",\r\n    \"model\": \"Civic\",\r\n    \"year\": 2019,\r\n    \"price\": 199990\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/cars/66aa23c1ccbdc94b2b6ecf01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cars",
+								"66aa23c1ccbdc94b2b6ecf01"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Car",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Test script for DELETE /api/cars endpoint\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"name": "cache-control",
+								"type": "text"
+							},
+							{
+								"key": "Postman-Token",
+								"value": "<calculated when request is sent>",
+								"name": "postman-token",
+								"type": "text"
+							},
+							{
+								"key": "Host",
+								"value": "<calculated when request is sent>",
+								"name": "host",
+								"type": "text"
+							},
+							{
+								"key": "User-Agent",
+								"value": "PostmanRuntime/7.39.1",
+								"name": "user-agent",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"name": "accept",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Encoding",
+								"value": "gzip, deflate, br",
+								"name": "accept-encoding",
+								"type": "text"
+							},
+							{
+								"key": "Connection",
+								"value": "keep-alive",
+								"name": "connection",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{Authorization}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/cars/6697f443e74334739a15f7d0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"cars",
+								"6697f443e74334739a15f7d0"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a Car",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{Authorization}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/cars/6697f443e74334739a15f7d0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"cars",
+										"6697f443e74334739a15f7d0"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "HTML",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express",
+									"type": "text"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8",
+									"type": "text"
+								},
+								{
+									"key": "Content-Length",
+									"value": "24",
+									"type": "text"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18-Hc5EiqOG7d/0DbJk6ggWuleIvw0\"",
+									"type": "text"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 17 Jul 2024 16:46:15 GMT",
+									"type": "text"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive",
+									"type": "text"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "Car deleted successfully"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "API Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Greet - Hello World",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/greet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"greet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Async operation Types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/employees?callType=callback",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"employees"
+					],
+					"query": [
+						{
+							"key": "callType",
+							"value": "callback"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Async operation Types - asyncAwait",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/employees?callType=asyncAwait",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "callType",
+									"value": "asyncAwait"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2561",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a01-7gz3+GipbqBcbE4DZcLfSwCmqYQ\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 14 Jul 2024 15:26:13 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"employee_name\": \"Tiger Nixon\",\n            \"employee_salary\": 320800,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"employee_name\": \"Garrett Winters\",\n            \"employee_salary\": 170750,\n            \"employee_age\": 63,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"employee_name\": \"Ashton Cox\",\n            \"employee_salary\": 86000,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"employee_name\": \"Cedric Kelly\",\n            \"employee_salary\": 433060,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"employee_name\": \"Airi Satou\",\n            \"employee_salary\": 162700,\n            \"employee_age\": 33,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 6,\n            \"employee_name\": \"Brielle Williamson\",\n            \"employee_salary\": 372000,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 7,\n            \"employee_name\": \"Herrod Chandler\",\n            \"employee_salary\": 137500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 8,\n            \"employee_name\": \"Rhona Davidson\",\n            \"employee_salary\": 327900,\n            \"employee_age\": 55,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 9,\n            \"employee_name\": \"Colleen Hurst\",\n            \"employee_salary\": 205500,\n            \"employee_age\": 39,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"employee_name\": \"Sonya Frost\",\n            \"employee_salary\": 103600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 11,\n            \"employee_name\": \"Jena Gaines\",\n            \"employee_salary\": 90560,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 12,\n            \"employee_name\": \"Quinn Flynn\",\n            \"employee_salary\": 342000,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 13,\n            \"employee_name\": \"Charde Marshall\",\n            \"employee_salary\": 470600,\n            \"employee_age\": 36,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 14,\n            \"employee_name\": \"Haley Kennedy\",\n            \"employee_salary\": 313500,\n            \"employee_age\": 43,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 15,\n            \"employee_name\": \"Tatyana Fitzpatrick\",\n            \"employee_salary\": 385750,\n            \"employee_age\": 19,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 16,\n            \"employee_name\": \"Michael Silva\",\n            \"employee_salary\": 198500,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 17,\n            \"employee_name\": \"Paul Byrd\",\n            \"employee_salary\": 725000,\n            \"employee_age\": 64,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 18,\n            \"employee_name\": \"Gloria Little\",\n            \"employee_salary\": 237500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 19,\n            \"employee_name\": \"Bradley Greer\",\n            \"employee_salary\": 132000,\n            \"employee_age\": 41,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 20,\n            \"employee_name\": \"Dai Rios\",\n            \"employee_salary\": 217500,\n            \"employee_age\": 35,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 21,\n            \"employee_name\": \"Jenette Caldwell\",\n            \"employee_salary\": 345000,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 22,\n            \"employee_name\": \"Yuri Berry\",\n            \"employee_salary\": 675000,\n            \"employee_age\": 40,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 23,\n            \"employee_name\": \"Caesar Vance\",\n            \"employee_salary\": 106450,\n            \"employee_age\": 21,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 24,\n            \"employee_name\": \"Doris Wilder\",\n            \"employee_salary\": 85600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        }\n    ],\n    \"message\": \"Successfully! All records has been fetched.\"\n}"
+				},
+				{
+					"name": "Async operation Types - promise",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/employees?callType=promise",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "callType",
+									"value": "promise"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2561",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a01-7gz3+GipbqBcbE4DZcLfSwCmqYQ\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 14 Jul 2024 15:33:25 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"employee_name\": \"Tiger Nixon\",\n            \"employee_salary\": 320800,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"employee_name\": \"Garrett Winters\",\n            \"employee_salary\": 170750,\n            \"employee_age\": 63,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"employee_name\": \"Ashton Cox\",\n            \"employee_salary\": 86000,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"employee_name\": \"Cedric Kelly\",\n            \"employee_salary\": 433060,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"employee_name\": \"Airi Satou\",\n            \"employee_salary\": 162700,\n            \"employee_age\": 33,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 6,\n            \"employee_name\": \"Brielle Williamson\",\n            \"employee_salary\": 372000,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 7,\n            \"employee_name\": \"Herrod Chandler\",\n            \"employee_salary\": 137500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 8,\n            \"employee_name\": \"Rhona Davidson\",\n            \"employee_salary\": 327900,\n            \"employee_age\": 55,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 9,\n            \"employee_name\": \"Colleen Hurst\",\n            \"employee_salary\": 205500,\n            \"employee_age\": 39,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"employee_name\": \"Sonya Frost\",\n            \"employee_salary\": 103600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 11,\n            \"employee_name\": \"Jena Gaines\",\n            \"employee_salary\": 90560,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 12,\n            \"employee_name\": \"Quinn Flynn\",\n            \"employee_salary\": 342000,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 13,\n            \"employee_name\": \"Charde Marshall\",\n            \"employee_salary\": 470600,\n            \"employee_age\": 36,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 14,\n            \"employee_name\": \"Haley Kennedy\",\n            \"employee_salary\": 313500,\n            \"employee_age\": 43,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 15,\n            \"employee_name\": \"Tatyana Fitzpatrick\",\n            \"employee_salary\": 385750,\n            \"employee_age\": 19,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 16,\n            \"employee_name\": \"Michael Silva\",\n            \"employee_salary\": 198500,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 17,\n            \"employee_name\": \"Paul Byrd\",\n            \"employee_salary\": 725000,\n            \"employee_age\": 64,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 18,\n            \"employee_name\": \"Gloria Little\",\n            \"employee_salary\": 237500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 19,\n            \"employee_name\": \"Bradley Greer\",\n            \"employee_salary\": 132000,\n            \"employee_age\": 41,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 20,\n            \"employee_name\": \"Dai Rios\",\n            \"employee_salary\": 217500,\n            \"employee_age\": 35,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 21,\n            \"employee_name\": \"Jenette Caldwell\",\n            \"employee_salary\": 345000,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 22,\n            \"employee_name\": \"Yuri Berry\",\n            \"employee_salary\": 675000,\n            \"employee_age\": 40,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 23,\n            \"employee_name\": \"Caesar Vance\",\n            \"employee_salary\": 106450,\n            \"employee_age\": 21,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 24,\n            \"employee_name\": \"Doris Wilder\",\n            \"employee_salary\": 85600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        }\n    ],\n    \"message\": \"Successfully! All records has been fetched.\"\n}"
+				},
+				{
+					"name": "Async operation Types - callback",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/employees?callType=callback",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "callType",
+									"value": "callback"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "2561",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a01-7gz3+GipbqBcbE4DZcLfSwCmqYQ\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 14 Jul 2024 16:07:54 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"employee_name\": \"Tiger Nixon\",\n            \"employee_salary\": 320800,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 2,\n            \"employee_name\": \"Garrett Winters\",\n            \"employee_salary\": 170750,\n            \"employee_age\": 63,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 3,\n            \"employee_name\": \"Ashton Cox\",\n            \"employee_salary\": 86000,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"employee_name\": \"Cedric Kelly\",\n            \"employee_salary\": 433060,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 5,\n            \"employee_name\": \"Airi Satou\",\n            \"employee_salary\": 162700,\n            \"employee_age\": 33,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 6,\n            \"employee_name\": \"Brielle Williamson\",\n            \"employee_salary\": 372000,\n            \"employee_age\": 61,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 7,\n            \"employee_name\": \"Herrod Chandler\",\n            \"employee_salary\": 137500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 8,\n            \"employee_name\": \"Rhona Davidson\",\n            \"employee_salary\": 327900,\n            \"employee_age\": 55,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 9,\n            \"employee_name\": \"Colleen Hurst\",\n            \"employee_salary\": 205500,\n            \"employee_age\": 39,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 10,\n            \"employee_name\": \"Sonya Frost\",\n            \"employee_salary\": 103600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 11,\n            \"employee_name\": \"Jena Gaines\",\n            \"employee_salary\": 90560,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 12,\n            \"employee_name\": \"Quinn Flynn\",\n            \"employee_salary\": 342000,\n            \"employee_age\": 22,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 13,\n            \"employee_name\": \"Charde Marshall\",\n            \"employee_salary\": 470600,\n            \"employee_age\": 36,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 14,\n            \"employee_name\": \"Haley Kennedy\",\n            \"employee_salary\": 313500,\n            \"employee_age\": 43,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 15,\n            \"employee_name\": \"Tatyana Fitzpatrick\",\n            \"employee_salary\": 385750,\n            \"employee_age\": 19,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 16,\n            \"employee_name\": \"Michael Silva\",\n            \"employee_salary\": 198500,\n            \"employee_age\": 66,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 17,\n            \"employee_name\": \"Paul Byrd\",\n            \"employee_salary\": 725000,\n            \"employee_age\": 64,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 18,\n            \"employee_name\": \"Gloria Little\",\n            \"employee_salary\": 237500,\n            \"employee_age\": 59,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 19,\n            \"employee_name\": \"Bradley Greer\",\n            \"employee_salary\": 132000,\n            \"employee_age\": 41,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 20,\n            \"employee_name\": \"Dai Rios\",\n            \"employee_salary\": 217500,\n            \"employee_age\": 35,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 21,\n            \"employee_name\": \"Jenette Caldwell\",\n            \"employee_salary\": 345000,\n            \"employee_age\": 30,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 22,\n            \"employee_name\": \"Yuri Berry\",\n            \"employee_salary\": 675000,\n            \"employee_age\": 40,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 23,\n            \"employee_name\": \"Caesar Vance\",\n            \"employee_salary\": 106450,\n            \"employee_age\": 21,\n            \"profile_image\": \"\"\n        },\n        {\n            \"id\": 24,\n            \"employee_name\": \"Doris Wilder\",\n            \"employee_salary\": 85600,\n            \"employee_age\": 23,\n            \"profile_image\": \"\"\n        }\n    ],\n    \"message\": \"Successfully! All records has been fetched.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Login API",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Parse the JSON response\r",
+							"var responseJson = pm.response.json();\r",
+							"\r",
+							"// Set the specific value to an environment variable\r",
+							"var token = responseJson.token;\r",
+							"pm.environment.set(\"Authorization\", token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"admintest\",\r\n    \"password\": \"adminpwd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login API - User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"usertest\",\r\n    \"password\": \"userpwd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a5-RD0soGyHIfBkTBYH1Z7arOp3ggU\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Jul 2024 16:34:33 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJ0ZXN0Iiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MjEyMzQwNzN9.ZlVRIQKlD1l-LXl3mY3eBTRxFdcuuiSYYFQ7bqRESR0\"\n}"
+				},
+				{
+					"name": "Login API - Admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admintest\",\r\n    \"password\": \"adminpwd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "JSON",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"type": "text"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"type": "text"
+						},
+						{
+							"key": "Content-Length",
+							"value": "168",
+							"type": "text"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a8-ifBvP8KiCFnHWaQVfLqP8/MmnE0\"",
+							"type": "text"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 17 Jul 2024 16:39:40 GMT",
+							"type": "text"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"type": "text"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWludGVzdCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyMTIzNDM4MH0.ihqTXnKppQH2y0s3CXp-oYiP2eJiec7kzH8lb7ECMa4\"\n}"
+				}
+			]
+		}
+	]
+}

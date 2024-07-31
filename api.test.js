@@ -35,7 +35,7 @@ describe('API tests', () => {
         });
     });
 
-    // Test API 2: Create a new user
+    // Test API 2: Create a new car
     describe('POST /api/cars', () => {
         it('should create a new car', async () => {
             const newCar = {
